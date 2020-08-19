@@ -7,7 +7,10 @@
     "type": "git",
     "url": "git+https://github.com/GraxMonzo/tailwind-caret-color.git"
   },
-  "author": "Bekzat Samatov",
+  "author": "Krishan Koenig",
+  "contributors": [
+    "Bekzat Samatov"
+  ],
   "license": "MIT",
   "private": false,
   "bugs": {
