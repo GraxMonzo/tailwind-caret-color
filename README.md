@@ -1,7 +1,7 @@
 # Caret Color - TailwindCSS Plugin
 
-[![npm](https://img.shields.io/npm/v/tailwind-caret-color.svg?style=flat-square)](https://www.npmjs.com/package/tailwind-caret-color)
-[![npm](https://img.shields.io/npm/dt/tailwind-caret-color.svg?style=flat-square)](https://www.npmjs.com/package/tailwind-caret-color)
+[![npm](https://img.shields.io/npm/v/@graxmonzo/tailwind-caret-color.svg?style=flat-square)](https://www.npmjs.com/package/@graxmonzo/tailwind-caret-color)
+[![npm](https://img.shields.io/npm/dt/@graxmonzo/tailwind-caret-color.svg?style=flat-square)](https://www.npmjs.com/package/@graxmonzo/tailwind-caret-color)
 
 This plugin generates classes for coloring carets using `caret-color: #;`.
 
@@ -10,11 +10,11 @@ This plugin generates classes for coloring carets using `caret-color: #;`.
 Pull it in through npm or yarn:
 
 ```bash
-npm install tailwind-caret-color
+npm install @graxmonzo/tailwind-caret-color
 ```
 
 ```bash
-yarn add tailwind-caret-color
+yarn add @graxmonzo/tailwind-caret-color
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ Add it to the plugins array of your Tailwind config.
 ```js
 plugins: [
   // Other plugins
-  require('tailwind-caret-color')(),
+  require('@graxmonzo/tailwind-caret-color')(),
 ],
 ```
 
