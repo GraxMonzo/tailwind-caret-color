@@ -1,10 +1,20 @@
 {
-  "name": "tailwind-caret-color",
-  "version": "1.0.4",
+  "name": "@graxmonzo/tailwind-caret-color",
+  "version": "1.0.5",
   "description": "Tailwind plugin to create caret color classes",
   "main": "index.js",
-  "repository": "https://github.com/Naoray/tailwind-caret-color",
-  "author": "Krishan Koenig",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GraxMonzo/tailwind-caret-color.git"
+  },
+  "author": "Bekzat Samatov",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "bugs": {
+    "url": "https://github.com/GraxMonzo/tailwind-caret-color/issues"
+  },
+  "homepage": "https://github.com/GraxMonzo/tailwind-caret-color#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
