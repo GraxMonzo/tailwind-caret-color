@@ -52,13 +52,20 @@ jobs:
         with:
           node-version: 14.x
 
-      - run: npm install
-
-      - run: npm test
-
-      - uses: JS-DevTools/npm-publish@v1
+      - name: Use cached node_modules
+        id: cache
+        uses: actions/cache@v2.1.1
         with:
-          token: ${{ secrets.NPM_TOKEN }}
+          path: node_modules
+          key: nodeModules-${{ hashFiles('**/yarn.lock') }}-${{ matrix.node-version }}
+          restore-keys: |
+            nodeModules-
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install
+        env:
+          CI: true
 
       - uses: JS-DevTools/npm-publish@v1
         with:
