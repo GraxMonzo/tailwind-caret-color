@@ -51,6 +51,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14.x
+          registry-url: https://npm.pkg.github.com/
+          scope: "@graxmonzo"
 
       - name: Use cached node_modules
         id: cache
@@ -67,10 +69,9 @@ jobs:
         env:
           CI: true
 
-      - uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          access: restricted
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - if: steps.publish.outputs.type != 'none'
         run: |
