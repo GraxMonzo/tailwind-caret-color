@@ -69,7 +69,13 @@ jobs:
         env:
           CI: true
 
-      - run: npm publish
+      - name: Publish on Github
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Publish on NPM
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
