@@ -69,8 +69,13 @@ jobs:
 
       - name: Publish package to NPM
         if: steps.check.outputs.changed == 'true'
-        run: npm publish
+        run: |
+          npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+          npm config set scope "@graxmonzo"
+          npm config list
+          npm publish --access public
         env:
+          CI: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Set up Node.js for GPR
