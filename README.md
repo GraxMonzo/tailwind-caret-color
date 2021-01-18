@@ -1,7 +1,10 @@
 # Caret Color - TailwindCSS Plugin
 
-[![npm](https://img.shields.io/npm/v/@graxmonzo/tailwind-caret-color.svg?style=flat-square)](https://www.npmjs.com/package/@graxmonzo/tailwind-caret-color)
-[![npm](https://img.shields.io/npm/dt/@graxmonzo/tailwind-caret-color.svg?style=flat-square)](https://www.npmjs.com/package/@graxmonzo/tailwind-caret-color)
+[![npm](https://img.shields.io/npm/v/@graxmonzo/tailwind-caret-color.svg)](https://www.npmjs.com/package/@graxmonzo/tailwind-caret-color)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/graxmonzo/tailwind-caret-color/Tests?label=tests)](https://github.com/graxmonzo/tailwind-caret-color/actions?query=workflow%3ATests+branch%3Amaster)
+[![npm](https://img.shields.io/npm/dt/@graxmonzo/tailwind-caret-color.svg)](https://www.npmjs.com/package/@graxmonzo/tailwind-caret-color)
+
+Fork of [`tailwind-caret-color`](https://github.com/Naoray/tailwind-caret-color) package. Tailwind 2.0.
 
 This plugin generates classes for coloring carets using `caret-color: #;`.
 
@@ -22,14 +25,30 @@ yarn add @graxmonzo/tailwind-caret-color
 Add it to the plugins array of your Tailwind config.
 
 ```js
-plugins: [
-  // Other plugins
-  require('@graxmonzo/tailwind-caret-color')(),
-],
+// tailwind.config.js
+
+{
+  variants: {
+    caretColor: ['dark', 'active'], // Default variants
+  },
+  plugins: [
+    require('@graxmonzo/tailwind-caret-color'),
+  ],
+}
 ```
 
 For each color in `colors` config of tailwind a `caret-{color}` class is created, analog to `bg-` and `text-` classes.
 
+## Testing
+
+```bash
+yarn test
+```
+
+## Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
 ## License
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
