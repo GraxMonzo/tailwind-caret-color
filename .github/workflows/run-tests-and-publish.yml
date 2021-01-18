@@ -55,7 +55,7 @@ jobs:
           scope: "@graxmonzo"
 
       - name: Use cached node_modules
-        id: cache
+        id: cache1
         uses: actions/cache@v2.1.1
         with:
           path: node_modules
@@ -64,7 +64,7 @@ jobs:
             nodeModules-
 
       - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache1.outputs.cache-hit != 'true'
         run: npm install
         env:
           CI: true
@@ -80,7 +80,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       
       - name: Use cached node_modules
-        id: cache
+        id: cache2
         uses: actions/cache@v2.1.1
         with:
           path: node_modules
@@ -89,7 +89,7 @@ jobs:
             nodeModules-
 
       - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache2.outputs.cache-hit != 'true'
         run: npm install
         env:
           CI: true
