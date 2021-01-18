@@ -1,0 +1,91 @@
+name: Auto-publish
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2.3.3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1.4.4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Use cached node_modules
+        id: cache
+        uses: actions/cache@v2.1.1
+        with:
+          path: node_modules
+          key: nodeModules-${{ hashFiles('**/yarn.lock') }}-${{ matrix.node-version }}
+          restore-keys: |
+            nodeModules-
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install
+        env:
+          CI: true
+
+      - name: Execute tests
+        run: npm test
+        env:
+          CI: true
+  publish:
+    name: Publish to NPM & GitHub Package Registry
+    runs-on: ubuntu-latest
+    if: contains(github.ref, 'master') # Publish it only if the push comes from the master branch
+    needs: test
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: master
+
+      - name: Check version changes
+        uses: EndBug/version-check@v1
+        id: check
+
+      - name: Version update detected
+        if: steps.check.outputs.changed == 'true'
+        run: 'echo "Version change found! New version: ${{ steps.check.outputs.version }} (${{ steps.check.outputs.type }})"'
+
+      - name: Set up Node.js for NPM
+        if: steps.check.outputs.changed == 'true'
+        uses: actions/setup-node@v1
+        with:
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        if: steps.check.outputs.changed == 'true'
+        run: npm install --only=prod
+
+      - name: Publish package to NPM
+        if: steps.check.outputs.changed == 'true'
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Set up Node.js for GPR
+        if: steps.check.outputs.changed == 'true'
+        uses: actions/setup-node@v1
+        with:
+          registry-url: "https://npm.pkg.github.com/"
+          scope: "@graxmonzo"
+
+      - name: Set up package for GPR
+        if: steps.check.outputs.changed == 'true'
+        run: npm publish
+
+      - name: Publish package to GPR
+        if: steps.check.outputs.changed == 'true'
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}

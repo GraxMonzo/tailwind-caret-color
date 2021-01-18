@@ -1,7 +1,7 @@
 # Caret Color - TailwindCSS Plugin
 
 [![npm](https://img.shields.io/npm/v/@graxmonzo/tailwind-caret-color.svg)](https://www.npmjs.com/package/@graxmonzo/tailwind-caret-color)
-![Test and Publish](https://github.com/GraxMonzo/tailwind-caret-color/workflows/Test%20and%20Publish/badge.svg)
+![Auto-publish](https://github.com/GraxMonzo/tailwind-caret-color/workflows/Auto-publish/badge.svg)
 [![npm](https://img.shields.io/npm/dt/@graxmonzo/tailwind-caret-color.svg)](https://www.npmjs.com/package/@graxmonzo/tailwind-caret-color)
 
 Fork of [`tailwind-caret-color`](https://github.com/Naoray/tailwind-caret-color) package. Tailwind 2.0.
