@@ -1,6 +1,6 @@
 {
   "name": "@graxmonzo/tailwind-caret-color",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Tailwind plugin to create caret color classes",
   "main": "index.js",
   "repository": {
@@ -19,9 +19,6 @@
   "homepage": "https://github.com/GraxMonzo/tailwind-caret-color#readme",
   "scripts": {
     "test": "jest"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
     "jest": "^27.0.4",
